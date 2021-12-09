@@ -1,0 +1,10 @@
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d6689a', 'PRODUCT A', 100);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d6689b', 'PRODUCT B', 110);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d6689c', 'PRODUCT C', 120);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d6689d', 'PRODUCT D', 130);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d6689e', 'PRODUCT E', 140);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d6689f', 'PRODUCT F', 150);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d66890', 'PRODUCT G', 160);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d66891', 'PRODUCT H', 180);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d66892', 'PRODUCT I', 190);
+insert into product (id, name, price) values ('d06dff10-be98-436c-b9e8-27c9a0d66893', 'PRODUCT J', 200);

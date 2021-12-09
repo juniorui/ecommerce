@@ -1,0 +1,12 @@
+com\sigga\ecommerce\crm\customer\CustomerResource.class
+com\sigga\ecommerce\core\controller\EcommerceController.class
+com\sigga\ecommerce\core\service\EcommerceService.class
+com\sigga\ecommerce\core\advice\ApiExceptionHandler.class
+com\sigga\ecommerce\core\repository\EcommerceRepository.class
+com\sigga\ecommerce\crm\customer\Customer.class
+com\sigga\ecommerce\core\exception\ResourceNotFoundException.class
+com\sigga\ecommerce\inventory\product\ProductResource.class
+com\sigga\ecommerce\core\entity\EcommerceEntity.class
+com\sigga\ecommerce\inventory\product\Product.class
+com\sigga\ecommerce\core\mapper\ModelMapperConfiguration.class
+com\sigga\ecommerce\core\resource\EcommerceResource.class
