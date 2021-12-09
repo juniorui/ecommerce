@@ -21,11 +21,11 @@ public class PurchaseOrderService extends EcommerceService<PurchaseOrderEntity, 
     }
 
     @Override
-    protected PurchaseOrder mapEntityToValueObject(PurchaseOrderEntity customer) {
+    protected PurchaseOrder mapEntityToValueObject(PurchaseOrderEntity entity) {
 
-        var purchase = super.mapEntityToValueObject(customer);
+        var purchase = super.mapEntityToValueObject(entity);
 
-        purchase.setCustomer(this.customerClient.findById(customer.getCustomerId()));
+        purchase.setCustomer(this.customerClient.findById(entity.getCustomerId()));
 
         return purchase;
     }

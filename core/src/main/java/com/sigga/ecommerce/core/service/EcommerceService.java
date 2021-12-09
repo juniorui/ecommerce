@@ -67,9 +67,9 @@ public abstract class EcommerceService<T extends EcommerceEntity, VO> {
                 .map(entity -> this.modelMapper.map(entity, getValueObjectClass()));
     }
 
-    protected VO mapEntityToValueObject(T customer) {
+    protected VO mapEntityToValueObject(T entity) {
 
-        return this.modelMapper.map(customer, this.getValueObjectClass());
+        return this.modelMapper.map(entity, this.getValueObjectClass());
     }
 
     protected T mapValueObjectToEntity(VO valueObject) {
