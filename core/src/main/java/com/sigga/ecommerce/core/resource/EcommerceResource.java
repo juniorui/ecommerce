@@ -1,5 +1,6 @@
 package com.sigga.ecommerce.core.resource;
 
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -26,5 +27,5 @@ public interface EcommerceResource<VO> {
     void delete(@PathVariable UUID id);
 
     @GetMapping
-    Page<VO> search(@RequestParam VO example, @RequestParam Pageable pageable);
+    Page<VO> search(@SpringQueryMap VO example, @SpringQueryMap Pageable pageable);
 }
