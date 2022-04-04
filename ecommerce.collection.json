@@ -1,0 +1,424 @@
+{
+	"info": {
+		"_postman_id": "512d79f7-25c8-410c-aedb-f5f48dcdb31a",
+		"name": "ECOMMERCE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRM",
+			"item": [
+				{
+					"name": "CUSTOMER",
+					"item": [
+						{
+							"name": "GET BY ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/customer/7223fda6-4ee6-405e-89ca-64abd9ce8a10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"customer",
+										"7223fda6-4ee6-405e-89ca-64abd9ce8a10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SEARCH",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/customer?email=a&name=b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"customer"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "a"
+										},
+										{
+											"key": "name",
+											"value": "b"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cézar Augusto\",\r\n    \"email\": \"cezaraf@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/customer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"customer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EDIT",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cézar Augusto\",\r\n    \"email\": \"cezaraf@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/customer/4d5fc259-6e9b-4bee-96f9-fc7768b1242b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"customer",
+										"4d5fc259-6e9b-4bee-96f9-fc7768b1242b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/customer/7223fda6-4ee6-405e-89ca-64abd9ce8a13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"customer",
+										"7223fda6-4ee6-405e-89ca-64abd9ce8a13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "INVENTORY",
+			"item": [
+				{
+					"name": "PRODUCT",
+					"item": [
+						{
+							"name": "GET BY ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9001/api/product/d06dff10-be98-436c-b9e8-27c9a0d6689b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"api",
+										"product",
+										"d06dff10-be98-436c-b9e8-27c9a0d6689b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SEARCH",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9001/api/product?name=a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"api",
+										"product"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"NOTEBOOK DELL I9 1000ª GERAÇÃO\",\r\n    \"price\": 9999.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9001/api/product",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"api",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EDIT",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"NOTEBOOK DELL I9 1000ª GERAÇÃO\",\r\n    \"price\": 9999.39\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9001/api/product/3364cbdb-9808-4f7e-b828-e0c3fb5b38e6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"api",
+										"product",
+										"3364cbdb-9808-4f7e-b828-e0c3fb5b38e6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9001/api/product/7223fda6-4ee6-405e-89ca-64abd9ce8a13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"api",
+										"product",
+										"7223fda6-4ee6-405e-89ca-64abd9ce8a13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ORDER",
+			"item": [
+				{
+					"name": "PURCHASE",
+					"item": [
+						{
+							"name": "GET BY ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9002/api/purchase-order/5ea9458b-f9b3-431f-bbbd-bea15736c847",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"api",
+										"purchase-order",
+										"5ea9458b-f9b3-431f-bbbd-bea15736c847"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SEARCH",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9002/api/purchase-order?name=notebook",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"api",
+										"purchase-order"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "notebook"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CREATE",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customer\": {\r\n        \"id\": \"7223fda6-4ee6-405e-89ca-64abd9ce8a10\"\r\n    },\r\n    \"products\": [\r\n        {\r\n            \"product\": {\r\n                \"id\": \"d06dff10-be98-436c-b9e8-27c9a0d6689a\"\r\n            },\r\n            \"quantity\": 10\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9002/api/purchase-order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"api",
+										"purchase-order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EDIT",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cézar Augusto\",\r\n    \"email\": \"cezaraf@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/customer/7223fda6-4ee6-405e-89ca-64abd9ce8a13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"customer",
+										"7223fda6-4ee6-405e-89ca-64abd9ce8a13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/customer/7223fda6-4ee6-405e-89ca-64abd9ce8a13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"customer",
+										"7223fda6-4ee6-405e-89ca-64abd9ce8a13"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
