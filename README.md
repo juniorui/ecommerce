@@ -17,7 +17,7 @@ Este projeto tem como objetivo ser utilizado como estrutura inicial para avaliar
 	...
 </project>
 ```
-A tecnologias utilizadas para concepção do projeto são:
+As tecnologias utilizadas para concepção do projeto são:
 
 - [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html "Java 17")
 - [Spring Boot 2.6.1](https://docs.spring.io/spring-boot/docs/2.6.1/reference/html/getting-started.html#getting-started "Spring Boot 2.6.1")
