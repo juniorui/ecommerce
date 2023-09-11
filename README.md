@@ -769,3 +769,4 @@ Para interagir com as APIs expostas, instale o [Postman](https://www.postman.com
 - [ ] Ao detalhar uma ordem de compra é possível notar que os campos `name` e `price` do produto não estão sendo retornados. Ajuste o sistema para que esses dados sejam retornados no detalhamento da ordem de compra.
 
 - [ ] Após realizar uma ordem de compra, atualizar o preço do produto e mandar detalhar a ordem de compra, note que o valor do produto na ordem foi alterado, o que não deveria acontecer. Ajuste o sistema para que o mesmo armazene o preço do produto no momento da criação da ordem de compra.
+- [ ] Após a compra, é necessário que um e-mail seja enviado ao cliente de forma assíncrona com o detalhamento da compra. Não é necessário fazer a integraçao com um servidor SMPT real, basta criar um mecanismo no qual o e-mail é exibido na saída padrão.
