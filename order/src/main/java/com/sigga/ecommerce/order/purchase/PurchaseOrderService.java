@@ -2,9 +2,13 @@ package com.sigga.ecommerce.order.purchase;
 
 import com.sigga.ecommerce.core.service.EcommerceService;
 import com.sigga.ecommerce.crm.customer.CustomerResourceClient;
-import com.sigga.ecommerce.product.ProductResourceClient;
+import com.sigga.ecommerce.inventory.product.Product;
+import com.sigga.ecommerce.inventory.product.ProductResourceClient;
 import org.modelmapper.ModelMapper;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 public class PurchaseOrderService extends EcommerceService<PurchaseOrderEntity, PurchaseOrder> {
@@ -16,9 +20,11 @@ public class PurchaseOrderService extends EcommerceService<PurchaseOrderEntity, 
     public PurchaseOrderService(
             PurchaseOrderRepository repository,
             ModelMapper modelMapper,
-            CustomerResourceClient customerClient, ProductResourceClient productClient) {
+            AmqpTemplate amqpTemplate,
+            CustomerResourceClient customerClient,
+            ProductResourceClient productClient) {
 
-        super(repository, modelMapper);
+        super(repository, modelMapper, amqpTemplate);
 
         this.customerClient = customerClient;
         this.productClient = productClient;
@@ -26,13 +32,22 @@ public class PurchaseOrderService extends EcommerceService<PurchaseOrderEntity, 
 
     @Override
     protected PurchaseOrder mapEntityToValueObject(PurchaseOrderEntity entity) {
-
         var purchase = super.mapEntityToValueObject(entity);
-
         purchase.setCustomer(this.customerClient.findById(entity.getCustomerId()));
-        purchase.getProducts().forEach(product ->
-                product.setProduct(this.productClient.findById(product.getProduct().getId())));
+
+        purchase.getProducts().forEach(product -> {
+            var prod = findProductClient(product.getProduct().getId());
+            prod.setPrice(product.getPurchasePrice());
+            product.setProduct(prod);
+            product.setPurchasePrice(null);
+        });
 
         return purchase;
     }
+
+    @Override
+    public Product findProductClient(UUID id) {
+        return productClient.findById(id);
+    }
+
 }

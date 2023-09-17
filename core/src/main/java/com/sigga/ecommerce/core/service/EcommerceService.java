@@ -2,9 +2,15 @@ package com.sigga.ecommerce.core.service;
 
 import com.sigga.ecommerce.core.entity.EcommerceEntity;
 import com.sigga.ecommerce.core.exception.ResourceNotFoundException;
+import com.sigga.ecommerce.core.rabbit.MailConfig;
 import com.sigga.ecommerce.core.repository.EcommerceRepository;
+import com.sigga.ecommerce.inventory.product.Product;
+import com.sigga.ecommerce.order.purchase.PurchaseOrder;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -20,8 +26,11 @@ import java.util.UUID;
 public abstract class EcommerceService<T extends EcommerceEntity, VO> {
 
     private final EcommerceRepository<T> repository;
-
     private final ModelMapper modelMapper;
+
+    private final AmqpTemplate rabbitTemplate;
+
+    String TYPE_PURCHASE_ORDER_ENTITY = "com.sigga.ecommerce.order.purchase.PurchaseOrderEntity";
 
     @Transactional(readOnly = true)
     public Optional<VO> findById(UUID id) {
@@ -32,7 +41,13 @@ public abstract class EcommerceService<T extends EcommerceEntity, VO> {
     @Transactional
     public UUID save(VO valueObject) {
 
-        return this.repository.save(this.mapValueObjectToEntity(valueObject)).getId();
+        var response = this.repository.save(this.mapValueObjectToEntity(valueObject));
+
+        if (Objects.equals(this.getEntityClass().getName(), TYPE_PURCHASE_ORDER_ENTITY)) {
+            sendMessage((PurchaseOrder) mapEntityToValueObject(response));
+        }
+
+        return response.getId();
     }
 
     @Transactional
@@ -67,14 +82,25 @@ public abstract class EcommerceService<T extends EcommerceEntity, VO> {
                 .map(entity -> this.modelMapper.map(entity, getValueObjectClass()));
     }
 
+
     protected VO mapEntityToValueObject(T entity) {
+
 
         return this.modelMapper.map(entity, this.getValueObjectClass());
     }
 
     protected T mapValueObjectToEntity(VO valueObject) {
 
+        if (Objects.equals(this.getEntityClass().getName(), TYPE_PURCHASE_ORDER_ENTITY)) {
+            if (!Objects.nonNull(((PurchaseOrder) valueObject).getProducts())) {
+                return this.modelMapper.map(valueObject, this.getEntityClass());
+            }
+            ((PurchaseOrder) valueObject).getProducts().forEach(product ->
+                    product.setPurchasePrice(findProductClient(product.getProduct().getId()).getPrice()));
+        }
+
         return this.modelMapper.map(valueObject, this.getEntityClass());
+
     }
 
     @SuppressWarnings("unchecked")
@@ -88,4 +114,13 @@ public abstract class EcommerceService<T extends EcommerceEntity, VO> {
 
         return (Class<T>) Objects.requireNonNull(GenericTypeResolver.resolveTypeArguments(this.getClass(), EcommerceService.class))[0];
     }
+
+    public Product findProductClient(UUID id) {
+        return new Product();
+    }
+
+    private void sendMessage(PurchaseOrder purchaseOrder) {
+        rabbitTemplate.convertAndSend(MailConfig.EXCHANGE_MAIL, MailConfig.ROUTING_KEY, purchaseOrder);
+    }
+
 }

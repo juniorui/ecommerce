@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
@@ -29,4 +30,7 @@ public class PurchaseOrderProductEntity implements EcommerceEntity {
 
     @Column
     private Integer quantity;
+
+    @Column(name = "purchase_price")
+    private BigDecimal purchasePrice;
 }

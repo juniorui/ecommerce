@@ -4,6 +4,7 @@ import com.sigga.ecommerce.core.entity.EcommerceEntity;
 import com.sigga.ecommerce.core.exception.ResourceNotFoundException;
 import com.sigga.ecommerce.core.resource.EcommerceResource;
 import com.sigga.ecommerce.core.service.EcommerceService;
+import com.sigga.ecommerce.inventory.product.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
